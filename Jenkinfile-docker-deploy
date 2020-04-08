@@ -72,16 +72,16 @@ stages {
 
       }
  }
- /* stage('Apply Kubernetes files') {
+  stage('Apply Kubernetes files') {
             steps {
-             sh label: '', script: '''scp *.yml jenkins@13.234.20.156:/home/jenkins
-                                  ssh jenkins@13.234.20.156 kubectl apply -f deploy-kube.yml
-                                  ssh jenkins@13.234.20.156 kubectl apply -f service.yml'''
+             sh label: '', script: '''scp *.yml jenkins@15.206.172.243:/home/jenkins
+                                  ssh jenkins@15.206.172.243 kubectl apply -f deploy-kube.yml
+                                  ssh jenkins@15.206.172.243 kubectl apply -f service.yml'''
            
         }
      }
-}*/
- stage('Deploy to Kubernetes') {
+}
+ /*stage('Deploy to Kubernetes') {
          steps {
          withKubeConfig([credentialsId: 'kube-key']) {
          sh 'kubectl config set-context $(kubectl config current-context) --namespace=default'
@@ -89,7 +89,7 @@ stages {
             } 
         }
      }
-}     
+} */    
 post {
         success {
             archiveArtifacts 'gameoflife-web/target/*.war'
