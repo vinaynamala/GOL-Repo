@@ -80,14 +80,14 @@ stages {
            
         }
      }
- stage('Deploy to Kubernetes') {
+/* stage('Deploy to Kubernetes') {
          steps {
          withKubeConfig([credentialsId: 'jenkins-kube']) {
          sh 'kubectl config set-context $(kubectl config current-context) --namespace=default'
          sh 'kubectl apply -f GOL-Deploy.yml'
         }
         }
-     }
+     }*/
 }     
 post {
         success {
