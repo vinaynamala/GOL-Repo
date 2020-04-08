@@ -80,8 +80,7 @@ stages {
            
         }
      }
-}
- /*stage('Deploy to Kubernetes') {
+ stage('Deploy to Kubernetes') {
          steps {
          withKubeConfig([credentialsId: 'kube-key']) {
          sh 'kubectl config set-context $(kubectl config current-context) --namespace=default'
@@ -89,7 +88,7 @@ stages {
             } 
         }
      }
-} */    
+}     
 post {
         success {
             archiveArtifacts 'gameoflife-web/target/*.war'
