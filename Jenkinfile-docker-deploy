@@ -64,6 +64,7 @@ stages {
         sh label: '', script: '''docker build -t gameoflife-image:$BUILD_NUMBER .
                                  docker tag gameoflife-image:$BUILD_NUMBER docker.io/raknas000/gameoflife-image:$BUILD_NUMBER
                                  docker push docker.io/raknas000/gameoflife-image:$BUILD_NUMBER'''
+                                 
       }
  }
   stage('Update Image Version') {
@@ -74,7 +75,7 @@ stages {
  }
   stage('Apply Kubernetes files') {
             steps {
-             sh label: '', script: '''scp *.yml jenkins@172.31.25.101:/home/jenkins
+             sh label: '', script: '''scp *.yml jenkins@172.31.43.130:/home/jenkins
                                   ssh jenkins@172.31.25.101 kubectl apply -f deploy-kube.yml
                                   ssh jenkins@172.31.25.101 kubectl apply -f service.yml'''
            
