@@ -1,4 +1,4 @@
-#Tomcat installation on the remote server
+#Tomcat installation on the remote servers
 ---
 - hosts: webservers
   become: true
