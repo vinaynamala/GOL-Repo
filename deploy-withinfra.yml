@@ -1,5 +1,6 @@
 #This playbook create new instance, install tomcat on the server and deploy the war file
 #Install ansible on jenkins
+#Install boto packages on the jenkins 
 #create AMI (which will contains jenkins user, public key with sudo privileges)
 #Disable host key verification in ansible.cfg file
 #Create user in AWS and configure the access key and secret key in jenkins server 
