@@ -29,7 +29,7 @@
       instance_tags: 
             name: webserver
       assign_public_ip: yes
-      vpc_subnet_id: subnet-eb3cd196
+      vpc_subnet_id: subnet-26c7f36a
     register: ec2  
   - name: Add Instance IP into in-memory inventory file not into hosts file
     add_host: 
