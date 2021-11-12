@@ -20,7 +20,7 @@
     ec2:
       instance_type: t2.micro
       key_name: sankar-devops
-      image: ami-02ef3073a059e8c5c
+      image: ami-045cc2972b3a8f75e
       region: us-east-2
       group: launch-wizard-25
       count: 1
