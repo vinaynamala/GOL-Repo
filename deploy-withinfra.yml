@@ -38,9 +38,9 @@
         ansible_user: jenkins
         ansible_become: yes
     loop: "{{ ec2.instances }}"
-  - name: Wait for 180 seconds before tomcat setup play execution    
+  - name: Wait for 90 seconds before tomcat setup play execution    
     wait_for:
-     timeout: 180
+     timeout: 90
 - name: tomcat setup
   hosts: tomcat
   become: true
