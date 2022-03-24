@@ -20,14 +20,14 @@
     ec2:
       instance_type: t2.micro
       key_name: sankar-aws
-      image: ami-0067e91fc0543d9f4
+      image: ami-0c35699f8377e53a4
       region: us-east-2
-      group: launch-wizard-3
-      count: 1
+      group: launch-wizard-5
+      count: 2
       wait: yes
       wait_timeout: 500
       instance_tags: 
-            name: webserver
+      name: webserver
       assign_public_ip: yes
       vpc_subnet_id: subnet-097a8a99f15cf0a07
     register: ec2  
@@ -38,9 +38,9 @@
         ansible_user: jenkins
         ansible_become: yes
     loop: "{{ ec2.instances }}"
-  - name: Wait for 180 seconds before tomcat setup play execution    
+  - name: Wait for 120 seconds before tomcat setup play execution    
     wait_for:
-     timeout: 180
+     timeout: 120
 - name: tomcat setup
   hosts: tomcat
   become: true
@@ -103,7 +103,7 @@
     when: stat_result.stat.exists == True
   - name: Deploy War File
     get_url:
-       url: http://3.133.59.206:8081/nexus/service/local/artifact/maven/redirect?r=releases&g=com.wakaleo.gameoflife&a=gameoflife&p=war&v=LATEST
+       url: http://18.118.130.82:8081/nexus/service/local/artifact/maven/redirect?r=releases&g=com.wakaleo.gameoflife&a=gameoflife&p=war&v=LATEST
        dest: /usr/share/tomcat/webapps/gameoflife.war
   - name: Start Tomcat
     service: name=tomcat state=started
