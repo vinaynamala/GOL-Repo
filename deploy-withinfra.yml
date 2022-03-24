@@ -27,7 +27,7 @@
       wait: yes
       wait_timeout: 500
       instance_tags: 
-      name: webserver
+          name: webserver
       assign_public_ip: yes
       vpc_subnet_id: subnet-097a8a99f15cf0a07
     register: ec2  
