@@ -23,7 +23,7 @@
       image: ami-0c35699f8377e53a4
       region: us-east-2
       group: launch-wizard-5
-      count: 2
+      count: 1
       wait: yes
       wait_timeout: 500
       instance_tags: 
