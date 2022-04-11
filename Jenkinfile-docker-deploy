@@ -52,6 +52,11 @@ stages {
         env.PATH = "${dockerHome}/bin:${env.PATH}"
         sudo usermod -aG docker jenkins
     } } }
+        stage('Adding jenkins user to docker group'){
+       steps {
+         script {
+         sh 'sudo usermod -aG docker jenkins'
+    } } }
    stage('Building our image') {
     steps{
     script {
