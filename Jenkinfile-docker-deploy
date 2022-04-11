@@ -86,10 +86,6 @@ stages {
              sh label: '', script: '''status_code=$(curl --write-out %{http_code} --silent --output /dev/null http://3.135.220.121:30005/gameoflife)
                                         if [[ "$status_code" -ne 200 ]] ; then
                                             echo "Deployment has some problem - $status_code"
-                                            //current_version=`kubectl rollout history deployment.apps/sample-deploy | cut -d' ' -f1 | tail -2 | head -1`
-                                            //echo "Current version is : $current_version"
-                                            //previous_version=$(($a - 1))
-                                            //echo "Previous version is : $previous_version"
                                             ssh jenkins@172.31.5.12 kubectl rollout undo deployment/sample-deploy
                                         else
                                             ssh jenkins@172.31.5.12 kubectl rollout  status deployment/sample-deploy
