@@ -5,7 +5,7 @@ pipeline {
       
     }
  environment {
-    registry = "docker.io/raknas000"
+    registry = "raknas000/test"
     registryCredential = 'docker-cred'
     dockerImage = 'test'
 }
