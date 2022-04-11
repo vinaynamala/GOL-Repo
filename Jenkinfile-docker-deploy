@@ -46,7 +46,12 @@ stages {
         } */
     }
 }
-    
+     stage('Docker Initialize'){
+       stage {
+         script {
+        def dockerHome = tool 'myDocker'
+        env.PATH = "${dockerHome}/bin:${env.PATH}"
+    } } }
    stage('Building our image') {
     steps{
     script {
