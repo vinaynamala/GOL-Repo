@@ -16,8 +16,8 @@ stages {
        // Run the maven build
 
       //if (isUnix()) {
-            sh 'mvn clean install'
-         //sh 'mvn clean install -DskipTests'
+          
+         sh 'mvn clean install -DskipTests'
          //sh 'mvn -Dmaven.test.failure.ignore=true install'
       //} 
       //else {
@@ -26,12 +26,12 @@ stages {
 //}
    }
  
-  stage('Unit Test Results') {
+  /*stage('Unit Test Results') {
       steps {
       junit '**/target/surefire-reports/TEST-*.xml'
       
       }
- }
+ }*/
  stage('Sonarqube') {
     environment {
         scannerHome = tool 'sonarqube'
