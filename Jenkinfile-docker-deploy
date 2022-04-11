@@ -16,7 +16,8 @@ stages {
        // Run the maven build
 
       //if (isUnix()) {
-         sh 'mvn clean install -DskipTests'
+            sh 'mvn clean install'
+         //sh 'mvn clean install -DskipTests'
          //sh 'mvn -Dmaven.test.failure.ignore=true install'
       //} 
       //else {
