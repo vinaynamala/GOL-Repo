@@ -90,7 +90,7 @@ stages {
                                             //echo "Current version is : $current_version"
                                             //previous_version=$(($a - 1))
                                             //echo "Previous version is : $previous_version"
-                                            ssh jenkins@172.31.5.12 kubectl rollout undo deployment/sample-deploy --to-revision=$previous_version
+                                            ssh jenkins@172.31.5.12 kubectl rollout undo deployment/sample-deploy
                                         else
                                             ssh jenkins@172.31.5.12 kubectl rollout  status deployment/sample-deploy
                                         fi
