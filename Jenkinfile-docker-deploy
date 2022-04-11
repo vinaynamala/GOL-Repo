@@ -4,6 +4,11 @@ pipeline {
         maven 'Maven' 
       
     }
+ environment {
+    registry = "docker.io/raknas000"
+    registryCredential = 'docker-cred'
+    dockerImage = 'test'
+}
 stages { 
      
     stage('Build') {
@@ -38,17 +43,22 @@ stages {
         } */
     }
 }
-    stage('Build image') {         
-       
-            app = docker.build("raknas000/test")    
-       }     
- 
-       stage('Push image') {
-       docker.withRegistry('https://registry.hub.docker.com', 'docker-cred') {            
-       app.push("${env.BUILD_NUMBER}")            
-       app.push("latest")        
-              }    
-           }
+   stage('Building our image') {
+    steps{
+    script {
+        dockerImage = docker.build registry + ":$BUILD_NUMBER"
+    }
+    }
+    }
+    stage('Deploy our image') {
+        steps{
+        script {
+            docker.withRegistry( '', registryCredential ) {
+            dockerImage.push()
+    }
+    }
+    }
+    }
 /*     stage('Artifact upload') {
       steps {
      nexusPublisher nexusInstanceId: '1234', nexusRepositoryId: 'releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'gameoflife-web/target/gameoflife.war']], mavenCoordinate: [artifactId: 'gameoflife1', groupId: 'com.wakaleo.gameoflife', packaging: 'war', version: '$BUILD_NUMBER']]]
