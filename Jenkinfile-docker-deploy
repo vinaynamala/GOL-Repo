@@ -51,11 +51,7 @@ stages {
         def dockerHome = tool 'docker'
         env.PATH = "${dockerHome}/bin:${env.PATH}"
     } } }
-        stage('Adding jenkins user to docker group'){
-       steps {
-         script {
-         sh 'sudo usermod -aG docker jenkins'
-    } } }
+
    stage('Building our image') {
     steps{
     script {
