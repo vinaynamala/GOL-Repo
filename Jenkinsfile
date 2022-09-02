@@ -41,15 +41,15 @@ stages {
       
       }
  }
-  stage('sonarqube') {
-    environment {
-        scannerHome = tool 'sonarqube'
-    }
-    steps {
-        withSonarQubeEnv('sonarqube') {
-            sh "${scannerHome}/bin/sonar-scanner"
-            
-        }
+  //stage('sonarqube') {
+    //environment {
+      //  scannerHome = tool 'sonarqube'
+    //}
+    //steps {
+      //  withSonarQubeEnv('sonarqube') {
+        //    sh "${scannerHome}/bin/sonar-scanner"
+         //   
+        //}
     //    timeout(time: 10, unit: 'MINUTES') {
     //      waitForQualityGate abortPipeline: true
     //    }
